@@ -1,0 +1,6 @@
+data
+submissions
+*.txt
+.ipynb_checkpoints
+catboost_info
+wandb
