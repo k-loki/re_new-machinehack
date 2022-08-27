@@ -23,8 +23,8 @@ def get_model(**kwargs):
     # model = CatBoostRegressor(n_estimators=5000, verbose=1000, task_type='GPU', random_seed=config['RAND'])
     model = LinearRegression()
     tme = TargetEncoder()
-    # pf = PolynomialFeatures(degree=2)
-    pca = PCA(n_components=10)
+    pf = PolynomialFeatures(degree=2)
+    # pca = PCA(n_components=10)
     scaler = StandardScaler()
     ct = make_column_transformer(
         (tme, cat_cols),
@@ -33,7 +33,7 @@ def get_model(**kwargs):
     model_pipe = make_pipeline(
         ct,
         scaler,
-        pca,
+        pf,
         model
     )
     return model_pipe
