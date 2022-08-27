@@ -26,7 +26,7 @@ wandb.login()
 config = load_config()
 model_config = config["MODEL"]
 print(model_config['model_name'])
-print(model_config['des'])
+print(model_config['desc'])
 
 # Load data
 train_data_path = config['train_data']
