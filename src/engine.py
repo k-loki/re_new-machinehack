@@ -20,7 +20,7 @@ config = load_config()
 
 def get_model(**kwargs):
 
-    model = KNeighborsRegressor(n_neighbors=20, weights='distance', algorithm='auto', p=2, metric='minkowski', n_jobs=-1)
+    model = KNeighborsRegressor(n_neighbors=10, weights='distance', algorithm='auto', p=2, metric='minkowski', n_jobs=-1)
     tme = TargetEncoder()
     # pf = PolynomialFeatures(degree=2)
     # pca = PCA(n_components=10, random_state=config['RAND'])
