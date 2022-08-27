@@ -28,6 +28,7 @@ config = load_config()
 model_config = config["MODEL"]
 print(model_config['model_name'])
 print(model_config['desc'])
+print(get_model())
 
 # Load data
 train_data_path = config['train_data']
@@ -40,12 +41,12 @@ def train_and_eval(X_train, y_train, X_val, y_val):
     model = get_model()
     model.fit(X_train, y_train)
     train_score = comp_score(model.predict(X_train), y_train)
-    print("Training mape: ", train_score)
+    print("Training MAPE: ", train_score)
 
     print('Validating Model..')
     preds = model.predict(X_val)
     val_score = comp_score(y_val, preds)
-    print("Validation score: ", val_score)
+    print("Validation MAPE: ", val_score)
     print("validation rmse: ", mean_squared_error(y_val, preds, squared=False))
 
     return model, train_score, val_score

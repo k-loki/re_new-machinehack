@@ -13,19 +13,17 @@ from sklearn.compose import make_column_transformer
 from sklearn.preprocessing import PolynomialFeatures
 from sklearn.decomposition import PCA
 from sklearn.preprocessing import StandardScaler
-from sklearn.svm import LinearSVR
-
+from sklearn.neighbors import KNeighborsRegressor
 
 # load config
 config = load_config()
 
 def get_model(**kwargs):
 
-    # model = CatBoostRegressor(n_estimators=5000, verbose=1000, task_type='GPU', random_seed=config['RAND'])
-    model = LinearSVR(loss='squared_epsilon_insensitive', random_state=config['RAND'], C=10, verbose=True)
+    model = KNeighborsRegressor(n_neighbors=10, weights='distance', algorithm='auto', p=2, metric='minkowski', n_jobs=-1)
     tme = TargetEncoder()
     # pf = PolynomialFeatures(degree=2)
-    # pca = PCA(n_components=10)
+    # pca = PCA(n_components=10, random_state=config['RAND'])
     scaler = StandardScaler()
     ct = make_column_transformer(
         (tme, cat_cols),

@@ -10,10 +10,10 @@ test_data: "../data/raw/test.csv"
 N_FOLDS: 10
 
 MODEL:
-  model_name: "svr testing"
+  model_name: "knn testing"
   save_models: True
   save_model_to: "../models"
-  desc: 'svr testing'
+  desc: 'knn testing'
 
 
 # for wandb
