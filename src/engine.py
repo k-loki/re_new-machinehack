@@ -23,7 +23,7 @@ def get_model(**kwargs):
     # model = CatBoostRegressor(n_estimators=5000, verbose=1000, task_type='GPU', random_seed=config['RAND'])
     model = LinearRegression()
     tme = TargetEncoder()
-    pf = PolynomialFeatures(degree=2)
+    pf = PolynomialFeatures(degree=3)
     # pca = PCA(n_components=10)
     scaler = StandardScaler()
     ct = make_column_transformer(
