@@ -10,10 +10,10 @@ test_data: "../data/raw/test.csv"
 N_FOLDS: 10
 
 MODEL:
-  model_name: "lr_pf3"
+  model_name: "lr_pf2"
   save_models: True
   save_model_to: "../models"
-  desc: 'simple lr with standard scaled deg3_pf'
+  desc: 'simple lr  deg2_pf'
 
 
 # for wandb

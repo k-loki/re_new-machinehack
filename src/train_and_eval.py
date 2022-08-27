@@ -18,6 +18,7 @@ from utils import load_config, comp_score
 from engine import get_model
 from sklearn.metrics import mean_squared_error
 from sklearn.model_selection import KFold
+import time
 
 
 wandb.login()
@@ -70,9 +71,12 @@ def __cross_validate(holdout=False, cv_predict=False, wandb_track=True):
             drop_cols, axis=1), train_fold.Target
         X_val, y_val = val_fold.drop(
             drop_cols, axis=1), val_fold.Target
-
+        
+        start = time.time() 
         model, train_score, val_score = train_and_eval(
             X_train, y_train, X_val, y_val)
+        end = time.time()
+        print(f'Time taken: {end - start}')
 
         if wandb_track:
             # wandb tracking
