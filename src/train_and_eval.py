@@ -17,6 +17,8 @@ import pandas as pd
 from utils import load_config, comp_score
 from engine import get_model
 from sklearn.metrics import mean_squared_error
+from sklearn.model_selection import KFold
+
 
 wandb.login()
 
@@ -50,26 +52,23 @@ def train_and_eval(X_train, y_train, X_val, y_val):
 def __cross_validate(holdout=False, cv_predict=False, wandb_track=True):
     cv_scores = []
 
-    drop_cols = ['timestamp', 'fold', 'Target']
+    drop_cols = ['timestamp', 'Target']
     
     if cv_predict:
         cvpreds_test = np.zeros(shape=(len(test_data), config['N_FOLDS']))
         cvpreds_train = np.zeros(shape=(len(train_data)))
-
-        print('cv predict...')
-
-    for fold in range(config['N_FOLDS']):
+    
+    kf = KFold(n_splits=config['N_FOLDS'], random_state=config['RAND'], shuffle=True)
+    for fold, train_idx, val_idx in kf.split(train_data):
         print(f'Fold : {fold}')
 
-        train_fold = train_data.loc[train_data.fold != fold]
-        val_fold = train_data.loc[train_data.fold == fold]
+        train_fold = train_data.iloc[train_idx]
+        val_fold = train_data.iloc[val_idx]
 
         X_train, y_train = train_fold.drop(
             drop_cols, axis=1), train_fold.Target
         X_val, y_val = val_fold.drop(
             drop_cols, axis=1), val_fold.Target
-
-        val_idx = val_fold.index
 
         model, train_score, val_score = train_and_eval(
             X_train, y_train, X_val, y_val)
