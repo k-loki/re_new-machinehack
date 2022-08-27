@@ -13,7 +13,8 @@ from sklearn.compose import make_column_transformer
 from sklearn.preprocessing import PolynomialFeatures
 from sklearn.decomposition import PCA
 from sklearn.preprocessing import StandardScaler
-from sklearn.linear_model import LinearRegression
+from sklearn.svm import LinearSVR
+
 
 # load config
 config = load_config()
@@ -21,9 +22,9 @@ config = load_config()
 def get_model(**kwargs):
 
     # model = CatBoostRegressor(n_estimators=5000, verbose=1000, task_type='GPU', random_seed=config['RAND'])
-    model = LinearRegression()
+    model = LinearSVR(loss='squared_epsilon_insensitive', random_state=config['RAND'], C=10, verbose=True)
     tme = TargetEncoder()
-    pf = PolynomialFeatures(degree=2)
+    # pf = PolynomialFeatures(degree=2)
     # pca = PCA(n_components=10)
     scaler = StandardScaler()
     ct = make_column_transformer(
@@ -32,7 +33,7 @@ def get_model(**kwargs):
     )
     model_pipe = make_pipeline(
         ct,
-        pf,
+        scaler,
         model
     )
     return model_pipe
