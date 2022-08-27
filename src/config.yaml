@@ -10,10 +10,10 @@ test_data: "../data/raw/test.csv"
 N_FOLDS: 10
 
 MODEL:
-  model_name: "baseline lr"
+  model_name: "lr_pca"
   save_models: True
   save_model_to: "../models"
-  desc: 'simple lr with standard scaled features'
+  desc: 'simple lr with standard scaled pca-10 fts'
 
 
 # for wandb

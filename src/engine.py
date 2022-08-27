@@ -24,7 +24,7 @@ def get_model(**kwargs):
     model = LinearRegression()
     tme = TargetEncoder()
     # pf = PolynomialFeatures(degree=2)
-    # pca = PCA(n_components=10)
+    pca = PCA(n_components=10)
     scaler = StandardScaler()
     ct = make_column_transformer(
         (tme, cat_cols),
@@ -33,6 +33,7 @@ def get_model(**kwargs):
     model_pipe = make_pipeline(
         ct,
         scaler,
+        pca,
         model
     )
     return model_pipe
