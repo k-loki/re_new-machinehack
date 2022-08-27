@@ -1,0 +1,19 @@
+RAND: 4567
+
+# original data
+DATA_DIR: "../data/raw"
+
+# preprocessed data
+train_data: "../data/train_folds.csv"
+test_data: "../data/raw/test.csv"
+
+N_FOLDS: 10
+
+MODEL:
+  model_name: "baseline cb"
+  save_models: True
+  save_model_to: "../models"
+
+
+# for wandb
+project: "renew-machinehack"
