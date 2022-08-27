@@ -26,6 +26,7 @@ wandb.login()
 config = load_config()
 model_config = config["MODEL"]
 print(model_config['model_name'])
+print(model_config['des'])
 
 # Load data
 train_data_path = config['train_data']
@@ -59,7 +60,7 @@ def __cross_validate(holdout=False, cv_predict=False, wandb_track=True):
         cvpreds_train = np.zeros(shape=(len(train_data)))
     
     kf = KFold(n_splits=config['N_FOLDS'], random_state=config['RAND'], shuffle=True)
-    for fold, train_idx, val_idx in kf.split(train_data):
+    for fold, (train_idx, val_idx) in enumerate(kf.split(train_data)):
         print(f'Fold : {fold}')
 
         train_fold = train_data.iloc[train_idx]
