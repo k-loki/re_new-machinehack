@@ -4,13 +4,13 @@ RAND: 4567
 DATA_DIR: "../data/raw"
 
 # preprocessed data
-train_data: "../data/train_folds.csv"
+train_data: "../data/raw/train.csv"
 test_data: "../data/raw/test.csv"
 
 N_FOLDS: 10
 
 MODEL:
-  model_name: "baseline cb_5k"
+  model_name: "cb_5k_pca"
   save_models: True
   save_model_to: "../models"
 
