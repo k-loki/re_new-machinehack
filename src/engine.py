@@ -13,25 +13,24 @@ from sklearn.compose import make_column_transformer
 from sklearn.preprocessing import PolynomialFeatures
 from sklearn.decomposition import PCA
 from sklearn.preprocessing import StandardScaler
-from sklearn.neighbors import KNeighborsRegressor
+from lightgbm import LGBMRegressor
 
 # load config
 config = load_config()
 
 def get_model(**kwargs):
 
-    model = KNeighborsRegressor(n_neighbors=2, weights='distance', algorithm='auto', p=2, metric='minkowski', n_jobs=2)
+    model = LGBMRegressor(random_state=config['RAND'], n_estimators=2000, n_jobs=-1, device='gpu', verbose=0, metric='mape')
     tme = TargetEncoder()
     # pf = PolynomialFeatures(degree=2)
     # pca = PCA(n_components=10, random_state=config['RAND'])
-    scaler = StandardScaler()
+    # scaler = StandardScaler()
     ct = make_column_transformer(
         (tme, cat_cols),
         remainder = 'passthrough'
     )
     model_pipe = make_pipeline(
         ct,
-        scaler,
         model
     )
     return model_pipe
