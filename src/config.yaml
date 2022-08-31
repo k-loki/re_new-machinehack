@@ -1,19 +1,19 @@
 RAND: 4567
 
-# original data
+# original data dir
 DATA_DIR: "../data/raw"
 
-# preprocessed data
-train_data: "../data/raw/train.csv"
-test_data: "../data/raw/test.csv"
+# data
+train_data: "../data/train_T1.csv"  
+test_data: "../data/test_T1.csv"
 
 N_FOLDS: 10
 
 MODEL:
-  model_name: "knn-3"
+  model_name: "xgb-3k_T1"
   save_models: True
   save_model_to: "../models"
-  desc: 'niave knn-3 with std scaling'
+  desc: 'xgb-3k on time based fts.'
 
 
 # for wandb
