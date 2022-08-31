@@ -10,10 +10,10 @@ test_data: "../data/test_T1.csv"
 N_FOLDS: 10
 
 MODEL:
-  model_name: "xgb-3k_T1"
+  model_name: "lr_T1"
   save_models: True
   save_model_to: "../models"
-  desc: 'xgb-3k on time based fts.'
+  desc: 'lr on time based fts.'
 
 
 # for wandb
