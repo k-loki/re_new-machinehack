@@ -96,10 +96,10 @@ def __cross_validate(holdout=False, cv_predict=False, wandb_track=True):
             
         print('----------------------------------------------------------')
 
-        # # save_model
-        # if config["save_models"] :
-        #     dump(model, config['save_model_to'] + '/' +  config['model_name'] + '_' + str(fold))
-        #     print('Model saved')
+        # save_model
+        if model_config["save_models"] :
+            dump(model, model_config['save_model_to'] + '/' +  model_config['model_name'] + '_' + str(fold))
+            print('Model saved')
 
         if holdout == True:
             break
