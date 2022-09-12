@@ -6,3 +6,4 @@ catboost_info
 wandb
 models
 __pycache__
+*.json
