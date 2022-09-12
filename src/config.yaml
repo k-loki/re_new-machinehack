@@ -4,16 +4,16 @@ RAND: 4567
 DATA_DIR: "../data/raw"
 
 # data
-train_data: "../data/train_T1.csv"  
-test_data: "../data/test_T1.csv"
+train_data: "../data/raw/train.csv"  
+test_data: "../data/raw/test.csv"
 
 N_FOLDS: 10
 
 MODEL:
-  model_name: "knn-3_T1"
+  model_name: "lr-rel_fts"
   save_models: True
   save_model_to: "../models"
-  desc: 'knn-3 on time based fts.'
+  desc: 'lr on rel fts.'
 
 
 # for wandb
