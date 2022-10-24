@@ -1,6 +1,6 @@
 # re_new-machinehack
 
-This is MachineLearning challenge hosted on [Machinehack hackathon](https://machinehack.com/hackathons/renew_power_hiring_hackathon/overview).
+This is MachineLearning challenge hosted on [Machinehack](https://machinehack.com/hackathons/renew_power_hiring_hackathon/overview).
 
 For more info on hackathon checkout the website.
 
